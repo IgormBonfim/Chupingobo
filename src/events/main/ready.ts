@@ -1,5 +1,5 @@
 import { CommandInteractionOptionResolver } from 'discord.js';
-import { client, cyan } from "../..";
+import { client, cyan } from "../../main";
 import { Event } from "../../structs/types/Event";
 
 export default new Event({

@@ -12,8 +12,10 @@ import dotenv from 'dotenv';
 import path from 'path';
 import fs from "fs";
 
-import { CommandType, ComponentsButton, ComponentsModal, ComponentsSelect } from './types/command';
+import { CommandType, ComponentsButton, ComponentsModal, ComponentsSelect } from './types/Command';
 import { EventType } from './types/Event';
+import DisTube from 'distube';
+import { YtDlpPlugin } from '@distube/yt-dlp';
 
 dotenv.config();
 const fileCondition = (fileName: string) => fileName.endsWith(".ts") || fileName.endsWith(".js");
@@ -24,6 +26,7 @@ export class ExtendedClient extends Client {
     public buttons: ComponentsButton = new Collection();
     public selects: ComponentsSelect = new Collection();
     public modals: ComponentsModal = new Collection();
+    public distube!: DisTube;
 
     constructor() {
         super({
@@ -43,6 +46,7 @@ export class ExtendedClient extends Client {
     public start(): void {
         this.registerModules();
         this.registerEvents();
+        this.configureDistube();
         this.login(process.env.TOKEN);
     }
 
@@ -103,5 +107,17 @@ export class ExtendedClient extends Client {
                 }
             });
         });  
+    }
+    
+    private configureDistube(): void {
+        this.distube = new DisTube(this, {
+            leaveOnStop: false,
+            emitNewSongOnly: true,
+            emitAddSongWhenCreatingQueue: false,
+            emitAddListWhenCreatingQueue: false,
+            plugins: [
+              new YtDlpPlugin()
+            ]
+          })
     }
 }

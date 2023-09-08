@@ -1,6 +1,6 @@
 import { Collection } from 'discord.js';
 import { ActionRowBuilder, ApplicationCommandType, ButtonBuilder, ButtonStyle } from 'discord.js';
-import { Command } from "../../structs/types/command";
+import { Command } from "../../structs/types/Command";
 
 export default new Command({
     name: "ping",
