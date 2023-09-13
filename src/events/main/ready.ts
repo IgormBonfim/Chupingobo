@@ -8,7 +8,7 @@ export default new Event({
     run() {
         const { commands, buttons, selects, modals } = client;
 
-        console.log("✔ Chupingobô está onlie".green);
+        console.log("✔ Chupingobô está online".green);
         console.log(`Comandos carregados ${commands.size}`.cyan);
         console.log(`Buttons carregados ${buttons.size}`.cyan);
         console.log(`Celects carregados ${selects.size}`.cyan);

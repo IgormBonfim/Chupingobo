@@ -5,7 +5,7 @@ import { Command } from '../../structs/types/Command';
 export default new Command({
     name: "play",
     type: ApplicationCommandType.ChatInput,
-    description: "Toca uma música",
+    description: "Toca a música informada",
     options: [
         {
             name: "musica",
@@ -17,6 +17,8 @@ export default new Command({
     run({interaction, client, options}) {
 
         const musica = options.getString("musica", true);
+
+        // const { member } = interaction;
 
         const message = interaction as any;
         const voiceChannel = message.member.voice.channel
