@@ -8,9 +8,9 @@ import {
     IntentsBitField,
     Partials,
 } from 'discord.js';
-import dotenv from 'dotenv';
-import path from 'path';
-import fs from "fs";
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+import * as fs from 'fs';
 
 import { CommandType, ComponentsButton, ComponentsModal, ComponentsSelect } from './types/Command';
 import { EventType } from './types/Event';
